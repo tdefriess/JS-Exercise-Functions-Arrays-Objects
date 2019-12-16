@@ -207,9 +207,12 @@ function sortCarInventory(inventory) {
   }
   newList = newList.sort();
   for (i in newList){    
-    sorted.push(inventory[newList[i]]);
-  }
-  console.log(sorted);
+    for (j in inventory) {
+      if (inventory[j].car_model == newList[i]){
+        sorted.push(inventory[j]);
+      }
+    }    
+  }  
   return sorted;
 }
 
