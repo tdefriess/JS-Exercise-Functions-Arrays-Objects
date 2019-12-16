@@ -40,7 +40,11 @@ function addNumbers(num1, num2) {
  * }
 */
 function makePersonObject(idNum, entryName, entryEmail) {
-  return {id: idNum, name: entryName, email: entryEmail};
+  return {
+    id: idNum,
+    name: entryName,
+    email: entryEmail
+  };
   
 }
 
@@ -147,10 +151,8 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoByIndex(inventory, index) {
-  const theNth = inventory.find((item, index) => {
-    return index - 1
-  })
-  return `This is a ${theNth.car_make} ${theNth.car_model}`
+  let car = inventory[index];
+  return `This is ${car.car_make} ${car.car_model}`;
 }
 
 /**
@@ -165,10 +167,8 @@ function getCarInfoByIndex(inventory, index) {
  * it will return `This is a Lincoln Town Car`.
 */
 function getLastCarInfo(inventory) {
-  const theLast = inventory.find((item, index) => {
-    return index === inventory.length - 1
-  })
-  return `This is a ${theLast.car_make} ${theLast.car_model}`
+  let lastCar = inventory[inventory.length - 1];
+  return `This is a ${lastCar.car_make} ${lastCar.car_model}`
 }
 
 /**
@@ -184,7 +184,11 @@ function getLastCarInfo(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoById(inventory, carID) {
-  
+  for (i in inventory){
+    if (inventory[i].id == carID){
+      return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
+    }
+  }
 }
 
 /**
@@ -195,8 +199,18 @@ function getCarInfoById(inventory, carID) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(inventory) {
+  let newList = [];
+  let sorted = [];
+  for (i in inventory){
+    newList.push(inventory[i].car_model);
+  }
+  newList = newList.sort();
+  for (i in newList){    
+    sorted.push(inventory[newList[i]]);
+  }
+  console.log(sorted);
+  return sorted;
 }
 
 /**
@@ -209,7 +223,7 @@ function sortCarInventory(/* code here */) {
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
 function getModelYears(inventory) {
-  modelYears = [];
+  let modelYears = [];
   for (id in inventory){
     modelYears.push(inventory[id].car_year);
   }
@@ -263,7 +277,7 @@ function getGermanCars(inventory) {
     }
     
   }
-  return germanCars
+  return germanCars;
 }
 
 /**
@@ -305,10 +319,10 @@ function carMaker(myOdometer) {
   let myObject = {
     odometer: myOdometer,
     drive: function(distance) {
-      return myObject.odometer = myObject.odometer + distance
+      return myObject.odometer = myObject.odometer + distance;
     }
   }
-  return myObject
+  return myObject;
 }
 
 /// ////// END OF CHALLENGE /////////
