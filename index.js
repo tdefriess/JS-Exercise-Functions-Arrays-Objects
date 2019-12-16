@@ -184,7 +184,7 @@ function getLastCarInfo(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoById(inventory, carID) {
-  for (i in inventory){
+  for (let i = 0; i < inventory.length; i++){
     if (inventory[i].id == carID){
       return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
     }
@@ -202,12 +202,12 @@ function getCarInfoById(inventory, carID) {
 function sortCarInventory(inventory) {
   let newList = [];
   let sorted = [];
-  for (i in inventory){
+  for (let i = 0; i < inventory.length; i++){
     newList.push(inventory[i].car_model);
   }
   newList = newList.sort();
-  for (i in newList){    
-    for (j in inventory) {
+  for (let i = 0; i < newList.length; i++){    
+    for (let j = 0; j < inventory.length; j++) {
       if (inventory[j].car_model == newList[i]){
         sorted.push(inventory[j]);
       }
@@ -227,8 +227,8 @@ function sortCarInventory(inventory) {
 */
 function getModelYears(inventory) {
   let modelYears = [];
-  for (id in inventory){
-    modelYears.push(inventory[id].car_year);
+  for (let i = 0; i < inventory.length; i++){
+    modelYears.push(inventory[i].car_year);
   }
   return modelYears;
 }
@@ -247,9 +247,9 @@ function getModelYears(inventory) {
 */
 function getOlderCars(inventory, maxYear) {
   let olderCars = [];
-  for (id in inventory){
-    if (inventory[id].car_year < maxYear + 1){
-      olderCars.push(inventory[id]);
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_year < maxYear + 1){
+      olderCars.push(inventory[i]);
     }
   }
   return olderCars;
@@ -268,15 +268,15 @@ function getOlderCars(inventory, maxYear) {
 */
 function getGermanCars(inventory) {
   let germanCars = [];
-  for (id in inventory) {
-    if (inventory[id].car_make == 'Audi'){
-      germanCars.push(inventory[id]);
-    } else if (inventory[id].car_make == 'Mercedes-Benz'){
-      germanCars.push(inventory[id]);
-    } else if (inventory[id].car_make == 'Volkswagen'){
-      germanCars.push(inventory[id]);
-    } else if (inventory[id].car_make == 'BMW'){
-      germanCars.push(inventory[id]);
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].car_make == 'Audi'){
+      germanCars.push(inventory[i]);
+    } else if (inventory[i].car_make == 'Mercedes-Benz'){
+      germanCars.push(inventory[i]);
+    } else if (inventory[i].car_make == 'Volkswagen'){
+      germanCars.push(inventory[i]);
+    } else if (inventory[i].car_make == 'BMW'){
+      germanCars.push(inventory[i]);
     }
     
   }
